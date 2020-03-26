@@ -1,0 +1,38 @@
+name: Docker
+
+on:
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+env:
+  # TODO: Change variable to your image's name.
+  IMAGE_NAME: hugobuilder
+
+jobs:
+  # Push image to GitHub Packages.
+  # See also https://docs.docker.com/docker-hub/builds/
+  push:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build . --file Dockerfile - t jfmatth/hugobuilder:latest
+
+      - name: Log into registry
+        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login docker.pkg.github.com -u ${{ secrets.DOCKER_USER }} --password-stdin
+
+      - name: Push image
+        run: |
+          docker push jfmatth/hugobuilder:latest
