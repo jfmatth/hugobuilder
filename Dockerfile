@@ -3,7 +3,7 @@
 FROM golang:latest AS GOLANG
 
 WORKDIR /go/src
-RUN git clone https://github.com/gohugoio/hugo --branch release-0.68.3
+RUN git clone https://github.com/gohugoio/hugo --branch stable
 
 WORKDIR /go/src/hugo
 RUN go build -o hugo main.go
