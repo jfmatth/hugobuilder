@@ -28,10 +28,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker build . --file Dockerfile - t jfmatth/hugobuilder:latest
+        run: docker build . --file Dockerfile -t jfmatth/hugobuilder:latest
 
       - name: Log into registry
-        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login docker.pkg.github.com -u ${{ secrets.DOCKER_USER }} --password-stdin
+        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
 
       - name: Push image
         run: |
