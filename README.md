@@ -6,7 +6,7 @@ However, some of the distributions out there aren't up to date with the latest v
 
 Feel free to use this in your project to build your static site files, and then move those into maybe an NGINX container hosting your files.
 
-I have an example that I use below
+I have an example below
 
 ## What does this container do
 
@@ -55,3 +55,8 @@ EXPOSE 80
 ```
 
 The built nginx container with the HUGO static site is about 28mb without any images.
+
+### Github action attached.
+
+Attached to this repo is a github action to rebuild the container and push to docker upon a push to master
+
