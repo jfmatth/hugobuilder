@@ -13,7 +13,7 @@ I have an example below
 Starting from the golang:latest container (which contains the GO language), it pulls down the latest stable branch of HUGO and compiles it into it's own container.  See Dockerfile for more information.
 
 
-## building the container yourself
+## Building the container yourself
 
 simply run build.sh and it will build the container and push up to my docker.io repository, and you may use it from there.
 
@@ -30,7 +30,7 @@ docker push jfmatth/hugobuilder:latest
 
 ## Example of using the hugobuilder container
 
-I use this container to build my hugo site.
+I use this container to build my sample hugo site.
 
 It's easy to use, here's an example of my Dockerfile for my site (https://github.com/jfmatth/lke-example.git)
 
