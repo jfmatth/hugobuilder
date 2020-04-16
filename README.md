@@ -8,7 +8,7 @@ Feel free to use this in your project to build your static site files, and then 
 
 I have an example below
 
-## What does this container do
+## What does this container do Thomas?
 
 Starting from the golang:latest container (which contains the GO language), it pulls down the latest stable branch of HUGO and compiles it into it's own container.  See Dockerfile for more information.
 
