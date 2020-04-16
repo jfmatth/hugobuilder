@@ -17,6 +17,8 @@ Starting from the golang:latest container (which contains the GO language), it p
 
 simply run build.sh and it will build the container and push up to my docker.io repository, and you may use it from there.
 
+
+
 ```
 $./build.sh
 ```
