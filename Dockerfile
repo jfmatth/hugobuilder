@@ -6,7 +6,7 @@ WORKDIR /go/src
 RUN git clone https://github.com/gohugoio/hugo --branch stable
 
 WORKDIR /go/src/hugo
-RUN go build -o hugo main.go
+RUN CGO_ENABLED=1 go build -tags extended -o hugo main.go
 
 FROM docker.io/ubuntu:latest as hugo
 
