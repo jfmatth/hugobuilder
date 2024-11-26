@@ -2,7 +2,7 @@ export version=v0.2
 # docker build . -t jfmatth/hugobuilder:$version
 # docker push jfmatth/hugobuilder:$version
 
-echo "Logging into gibhub container registry, use PAT"
-podman login --username jfmatth ghcr.io
+# Podman login credentials in ~/.config/containers/auth.json (https://docs.podman.io/en/latest/markdown/podman-login.1.html#examples)
+podman login ghcr.io
 podman  build . -t ghcr.io/jfmatth/hugobuilder:$version
 podman  push ghcr.io/jfmatth/hugobuilder:$version

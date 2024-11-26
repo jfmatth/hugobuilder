@@ -6,6 +6,7 @@ WORKDIR /go/src
 RUN git clone https://github.com/gohugoio/hugo --branch stable
 
 WORKDIR /go/src/hugo
+# Enable extended edition of HUGO (https://gohugo.io/installation/linux/#build-from-source)
 RUN CGO_ENABLED=1 go build -tags extended -o hugo main.go
 
 FROM docker.io/ubuntu:latest as hugo
