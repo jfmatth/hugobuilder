@@ -1,4 +1,4 @@
-set version=v0.139.2
+set version=v0.139.3
 set image=ghcr.io/jfmatth/hugobuilder
 @REM # docker build . -t jfmatth/hugobuilder:$version
 @REM # docker push jfmatth/hugobuilder:$version
