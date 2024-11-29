@@ -3,10 +3,11 @@
 FROM docker.io/golang:latest AS GOLANG
 
 WORKDIR /go/src
-RUN git clone https://github.com/gohugoio/hugo --branch stable
+RUN git clone -b v0.139.2 https://github.com/gohugoio/hugo
 
 WORKDIR /go/src/hugo
-RUN go build -o hugo main.go
+# Enable extended edition of HUGO (https://gohugo.io/installation/linux/#build-from-source)
+RUN CGO_ENABLED=1 go build -tags extended -o hugo main.go
 
 FROM docker.io/ubuntu:latest as hugo
 
