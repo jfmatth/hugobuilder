@@ -1,4 +1,4 @@
-export version=v0.139.2
+export version=v0.139.3
 # docker build . -t jfmatth/hugobuilder:$version
 # docker push jfmatth/hugobuilder:$version
 
