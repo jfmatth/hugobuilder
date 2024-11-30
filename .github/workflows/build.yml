@@ -18,17 +18,12 @@ jobs:
         run: echo "::set-output name=ver::$(cat VERSION)"
 
       # - 
-      #   name: Read version from file
-      #   id: get_version
-      #   run: echo "VER=$(cat VERSION)" >> $GITHUB_ENV
-
-      - 
-        name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+      #   name: Login to GitHub Container Registry
+      #   uses: docker/login-action@v3
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
