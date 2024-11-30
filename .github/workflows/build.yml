@@ -13,10 +13,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - 
-        name: Read version from file
-        id: get_version
-        run: echo "VER=$(cat VERSION)" >> $GITHUB_ENV
+      - name: Define variable
+        id: define_version
+        run: echo "::set-output name=ver::$(cat VERSION)"
+
+      # - 
+      #   name: Read version from file
+      #   id: get_version
+      #   run: echo "VER=$(cat VERSION)" >> $GITHUB_ENV
 
       - 
         name: Login to GitHub Container Registry
@@ -31,4 +35,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.actor }}/${{ github.repository }}:latest
+          tags: ghcr.io//${{ github.repository }}:${{ steps.define_version.outputs.ver }}
