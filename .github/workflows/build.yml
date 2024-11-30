@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    # - uses: actions/checkout@v4
 
     - 
       name: Read version from file
@@ -35,7 +35,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: user/app:latest
+        # tags: user/app:latest
     
 
     # - name: Build the Docker image
