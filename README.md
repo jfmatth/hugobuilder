@@ -8,30 +8,30 @@ However, some of the distributions out there aren't up to date with the latest v
 
 Starting from the golang:latest container (which contains the GO language), it pulls down the latest stable branch of HUGO and compiles it into it's own container.  See Dockerfile for more information.
 
-## Example of using the hugobuilder container
+## github actions
+This simple container allowed me to learn github actions.  Every checkin to master will cause a new build of the image.
+
+I typically update the VERSION file and Dockerfile for each release of HUGO.
+
+##  Using the hugobuilder container
 
 I use this container to build my sample hugo site.
 
-It's easy to use, here's an example of my Dockerfile for my site (https://github.com/jfmatth/lke-example.git)
-
+It's easy to use, checkout the Dockerfile at my repo (https://github.com/jfmatth/justneverlift.com.git)
 ```
-FROM ghcr.io/jfmatth/hugobuilder:<version> as HUGO
+FROM ghcr.io/jfmatth/hugobuilder:v0.139.3 as HUGO
 
 # Copy the contents of the current working directory to the static-site directory.
 COPY . /static-site
 
 # Command Hugo to build the static site from the source files,
 # setting the destination to the public directory.
-RUN hugo -v --source=/static-site --destination=/static-site/public
+RUN hugo --logLevel debug --source=/static-site --destination=/static-site/public
 
 # Install NGINX, remove the default NGINX index.html file, and
 # copy the built static site files to the NGINX html directory.
-FROM docker.io/nginx:stable-alpine
-RUN mv /usr/share/nginx/html/index.html /usr/share/nginx/html/old-index.html
+# FROM docker.io/nginx
+FROM cgr.dev/chainguard/nginx
 COPY --from=HUGO /static-site/public/ /usr/share/nginx/html/
-
-# Instruct the container to listen for requests on port 80 (HTTP).
-EXPOSE 80
 ```
-The built nginx container with the HUGO static site is about 28mb without any images.
 
