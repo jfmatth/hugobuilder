@@ -3,7 +3,7 @@
 FROM docker.io/golang:latest AS GOLANG
 
 WORKDIR /go/src
-RUN git clone -b v0.143.1 https://github.com/gohugoio/hugo
+RUN git clone -b v0.144.1 https://github.com/gohugoio/hugo
 
 WORKDIR /go/src/hugo
 # Enable extended edition of HUGO (https://gohugo.io/installation/linux/#build-from-source)
