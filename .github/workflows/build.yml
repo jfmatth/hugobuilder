@@ -29,4 +29,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ steps.define_version.outputs.ver }}
+          tags: |
+            ghcr.io/${{ github.repository }}:${{ steps.define_version.outputs.ver }}
+            ghcr.io/${{ github.repository }}:latest
