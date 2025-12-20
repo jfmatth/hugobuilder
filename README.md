@@ -1,4 +1,4 @@
-## A Docker container to build HUGO websites
+# A Docker container to build HUGO websites
 
 HUGO (www.gohugo.io) is an excellent static site generator written in GO.  HUGO is quick to build and easy to use.
 
@@ -8,7 +8,18 @@ However, some of the distributions out there aren't up to date with the latest v
 
 Starting from the golang:latest container (which contains the GO language), it pulls down the latest stable branch of HUGO and compiles it into it's own container.  See Dockerfile for more information.
 
-## github actions
+
+## Builds
+
+### Local Builds
+```
+podman machine start
+.\build.bat
+```
+
+If successful, then commit to master and push
+
+### github actions
 This simple container allowed me to learn github actions.  Every checkin to master will cause a new build of the image.
 
 I typically update the VERSION file and Dockerfile for each release of HUGO.
