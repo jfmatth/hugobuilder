@@ -6,23 +6,20 @@ However, some of the distributions out there aren't up to date with the latest v
 
 ## What does this container do?
 
-Starting from the golang:latest container (which contains the GO language), it pulls down the latest stable branch of HUGO and compiles it into it's own container.  See Dockerfile for more information.
-
+Using the Chainguard base container, add hugo and save the container as hugobuilder
 
 ## Builds
 
 ### Local Builds
+Using the function I have on my system, ```build``` it will look for the ```IMAGE``` and ```VERSION``` files to determine the name of the image and it's tag.  
+
+There is an optional ```-push``` flag that will push it to the remote repo.
+
 ```
-podman machine start
-.\build.bat
+build 
 ```
 
-If successful, then commit to master and push
-
-### github actions
-This simple container allowed me to learn github actions.  Every checkin to master will cause a new build of the image.
-
-I typically update the VERSION file and Dockerfile for each release of HUGO.
+You should test the build locally before commiting any changes to master, as that will cause GH Action to build and push the image as well.
 
 ##  Using the hugobuilder container
 
