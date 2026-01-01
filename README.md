@@ -27,7 +27,7 @@ I use this container to build my sample hugo site.
 
 It's easy to use, checkout the Dockerfile at my repo (https://github.com/jfmatth/justneverlift.com.git)
 ```
-FROM ghcr.io/jfmatth/hugobuilder:v0.139.3 as HUGO
+FROM ghcr.io/jfmatth/hugobuilder:latest as HUGO
 
 # Copy the contents of the current working directory to the static-site directory.
 COPY . /static-site
